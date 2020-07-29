@@ -3,7 +3,6 @@ package com.arahansa.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,10 +42,7 @@ public class HelloController {
             int num = (size*page)+i;
             helloList.add(new Hello("네임"+num, "메시지 "+num));
         }
-        PageImpl pageImpl = new PageImpl(helloList, pageable, 200);
-
-        return pageImpl;
-
+        return new PageImpl(helloList, pageable, 200);
     }
 
 }
