@@ -43,7 +43,9 @@ public class HelloController {
             int num = (size*page)+i;
             helloList.add(new Hello("네임"+num, "메시지 "+num));
         }
-        return new PageImpl(helloList, pageable, 1000);
+        PageImpl pageImpl = new PageImpl(helloList, pageable, 200);
+
+        return pageImpl;
 
     }
 

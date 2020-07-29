@@ -53,16 +53,17 @@ $(function(){
 
     const infinity = async function*(){
         let page = 1;
-        let last = false;
+        let isLastPage = false;
         do{
             try{
-                const {number, content} = await api2(`/page/?page=${page}`);
+                const {number, content, last} = await api2(`/page/?page=${page}`);
                 page = number + 2;
+                isLastPage = last;
                 yield content;
             }catch(e){
                 return;
             }
-        }while(last === false)
+        }while(isLastPage === false)
     }
 
     const hello = infinity();
